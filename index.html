@@ -11,96 +11,166 @@
            padding: 0;
            box-sizing: border-box;
        }
-
        :root {
            --bg-primary: #0a0a0b;
            --bg-secondary: #111113;
+           --text-primary: #ffffff;
            --text-secondary: #a3a3a3;
+           --text-muted: #6b7280;
            --border: #1f1f23;
            --accent: #3b82f6;
+           --accent-red: #ef4444;
        }
-
        body {
            font-family: 'Satoshi', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
            background-color: var(--bg-primary);
-           color: white;
+           color: var(--text-primary);
            line-height: 1.6;
-           min-height: 100vh;
-           display: flex;
-           flex-direction: column;
-           justify-content: center;
-           align-items: center;
            letter-spacing: -0.04em;
        }
-
+       .hero {
+           padding: 6rem 2rem 4rem 2rem;
+           margin-left: 3rem;
+       }
        .container {
            max-width: 800px;
-           padding: 2rem;
-           text-align: center;
+           margin: 0 auto;
+           width: 100%;
        }
-
        .logo {
            font-size: clamp(4rem, 8vw, 6rem);
            font-weight: 700;
            margin-bottom: 1rem;
-           background: white;
+           background: var(--text-primary);
            -webkit-background-clip: text;
            -webkit-text-fill-color: transparent;
            background-clip: text;
            letter-spacing: -0.04em;
        }
-
        .logo .dot {
-           color: blue !important;
-           -webkit-text-fill-color: yellow !important;
+           color: var(--accent-red);
+           -webkit-text-fill-color: var(--accent-red);
            background: none !important;
        }
-
        .subtitle {
            font-size: clamp(1.25rem, 3vw, 1.5rem);
            color: var(--text-secondary);
            font-weight: 400;
-           margin-bottom: 3rem;
+           margin-bottom: 2rem;
            letter-spacing: -0.04em;
        }
 
-       .tech-stack {
-           display: inline-flex;
-           align-items: center;
-           background: var(--bg-secondary);
-           border: 1px solid var(--border);
-           border-radius: 12px;
-           padding: 0.75rem 1.5rem;
-           font-size: 0.9rem;
-           color: var(--text-secondary);
+       /* GitHub link styling */
+       .github-link {
+           display: inline-block;
+           color: white;
+           text-decoration: underline;
+           text-decoration-color: var(--accent-red);
+           font-size: clamp(1.1rem, 2.5vw, 1.25rem);
+           font-weight: 700;
+           margin-bottom: 4rem;
            letter-spacing: -0.04em;
+           transition: opacity 0.2s ease;
        }
-
-       .cpp-icon {
-           width: 20px;
-           height: 20px;
-           margin-right: 0.5rem;
+       .github-link:hover {
            opacity: 0.8;
        }
 
+       /* Minimalist Devlog Section */
+       .devlog-section {
+           max-width: 800px;
+           margin: 2rem auto;
+           margin-top: -1rem;
+           padding: 0 2rem;
+       }
+       .devlog-title {
+           font-size: 2rem;
+           font-weight: 700;
+           margin-bottom: 2rem;
+           color: var(--text-primary);
+       }
+       .devlog-item {
+           margin-bottom: 2.5rem;
+           padding-bottom: 2rem;
+           border-bottom: 1px solid var(--border);
+       }
+       .devlog-item:last-child {
+           border-bottom: none;
+       }
+       .devlog-header {
+           display: flex;
+           align-items: baseline;
+           gap: 1rem;
+           margin-bottom: 0.75rem;
+       }
+       .devlog-hash {
+           color: var(--accent-red);
+           font-weight: 500;
+           font-size: 1.1rem;
+       }
+       .devlog-item-title {
+           font-size: 1.1rem;
+           font-weight: 500;
+           color: var(--text-primary);
+           text-decoration: underline;
+           text-decoration-color: var(--accent-red);
+           text-underline-offset: 3px;
+       }
+       .devlog-date {
+           font-size: 0.9rem;
+           color: var(--text-muted);
+           margin-bottom: 0.75rem;
+       }
+       .devlog-description {
+           color: var(--text-secondary);
+           font-size: 0.95rem;
+           line-height: 1.6;
+           margin-bottom: 0.75rem;
+       }
+       .devlog-read-more {
+           color: var(--accent-red);
+           text-decoration: underline;
+           text-decoration-color: var(--accent-red);
+           font-size: 0.9rem;
+           font-weight: 500;
+       }
+
        @media (max-width: 768px) {
-           .container {
-               padding: 1rem;
+           .hero {
+               padding: 4rem 1rem 3rem 1rem;
+               margin-left: 0rem;
+           }
+           .devlog-section {
+               padding: 0 1rem;
+           }
+           .devlog-header {
+               flex-direction: column;
+               align-items: flex-start;
+               gap: 0.5rem;
            }
        }
    </style>
 </head>
 <body>
-   <div class="container">
-       <h1 class="logo">vayu<span class="dot">.</span></h1>
-       <p class="subtitle">lightweight deep learning framework to teach you how to backprop</p>
-       
-       <div class="tech-stack">
-           <svg class="cpp-icon" viewBox="0 0 24 24" fill="currentColor">
-               <path d="M22.394 6c-.167-.29-.398-.543-.652-.69L12.926.22c-.509-.294-1.34-.294-1.848 0L2.26 5.31c-.508.293-.923 1.013-.923 1.6v10.18c0 .294.104.62.271.91.167.29.398.543.652.69l8.816 5.09c.508.293 1.34.293 1.848 0l8.816-5.09c.254-.147.485-.4.652-.69.167-.29.27-.616.27-.91V6.91c.003-.294-.1-.62-.268-.91zM12 19.11c-3.92 0-7.109-3.19-7.109-7.11 0-3.92 3.19-7.11 7.109-7.11a7.133 7.133 0 016.156 3.553l-3.076 1.78a3.567 3.567 0 00-3.08-1.78A3.56 3.56 0 008.444 12 3.56 3.56 0 0012 15.555a3.57 3.57 0 003.08-1.778l3.078 1.78A7.135 7.135 0 0112 19.11zm7.11-6.715h-.79V11.61h-.79v.785h-.79v.79h.79v.79h.79v-.79h.79v-.79zm2.962 0h-.79V11.61h-.79v.785h-.79v.79h.79v.79h.79v-.79h.79v-.79z"/>
-           </svg>
-           Built with C++
+   <section class="hero">
+       <div class="container">
+           <h1 class="logo">vayu<span class="dot">.</span></h1>
+           <p class="subtitle">lightweight deep learning framework to teach you how to backprop</p>
+           <a href="https://github.com/thevoxium/vayu-ml" class="github-link">star on github →</a>
        </div>
-   </div>
+   </section>
+
+   <section class="devlog-section">
+       <h2 class="devlog-title">devlog</h2>
+       
+       <article class="devlog-item">
+           <div class="devlog-header">
+               <span class="devlog-hash">#</span>
+               <h3 class="devlog-item-title">first backprop implmentation</h3>
+           </div>
+           <div class="devlog-date">Jun 13, 2025</div>
+           <p class="devlog-description">implemented value class with + operator overload and a topological sort based backpropagation. see examples/ folder.</p>
+       </article>
+   </section>
 </body>
 </html>
