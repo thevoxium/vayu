@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Vayu - README</title>
+   <link href="https://api.fontshare.com/v2/css?f[]=satoshi@400,500,700&display=swap" rel="stylesheet">
+   <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-dark.min.css" rel="stylesheet">
+   <style>
+       * {
+           margin: 0;
+           padding: 0;
+           box-sizing: border-box;
+       }
+       :root {
+           --bg-primary: #0a0a0b;
+           --bg-secondary: #111113;
+           --text-primary: #ffffff;
+           --text-secondary: #a3a3a3;
+           --text-muted: #6b7280;
+           --border: #1f1f23;
+           --accent: #3b82f6;
+           --accent-red: #ef4444;
+           --code-bg: #1a1a1a;
+       }
+       body {
+           font-family: 'Satoshi', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+           background-color: var(--bg-primary);
+           color: var(--text-primary);
+           line-height: 1.6;
+           letter-spacing: -0.04em;
+       }
+       .container {
+           max-width: 800px;
+           margin: 0 auto;
+           padding: 4rem 2rem;
+       }
+       .back-link {
+           display: inline-block;
+           color: white;
+           text-decoration: underline;
+           text-decoration-color: var(--accent-red);
+           font-size: 1.1rem;
+           font-weight: 700;
+           margin-bottom: 3rem;
+           letter-spacing: -0.04em;
+           transition: opacity 0.2s ease;
+       }
+       .back-link:hover {
+           opacity: 0.8;
+       }
+       h1 {
+           font-size: clamp(3rem, 6vw, 4rem);
+           font-weight: 700;
+           margin-bottom: 1rem;
+           color: var(--text-primary);
+           letter-spacing: -0.04em;
+       }
+       h1 .dot {
+           color: var(--accent-red);
+       }
+       .tagline {
+           font-size: 1.25rem;
+           color: var(--text-secondary);
+           font-weight: 700;
+           margin-bottom: 2rem;
+           letter-spacing: -0.04em;
+       }
+       .github-badge {
+           margin-bottom: 2rem;
+       }
+       .github-badge img {
+           height: 20px;
+       }
+       h2 {
+           font-size: 1.5rem;
+           font-weight: 700;
+           color: var(--text-primary);
+           margin: 2.5rem 0 1rem 0;
+           letter-spacing: -0.04em;
+       }
+       p {
+           color: var(--text-secondary);
+           margin-bottom: 1rem;
+       }
+       pre {
+           background-color: var(--code-bg);
+           border: 1px solid var(--border);
+           border-radius: 8px;
+           padding: 1.5rem;
+           margin: 1rem 0;
+           overflow-x: auto;
+           font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+           font-size: 0.9rem;
+           line-height: 1.4;
+       }
+       code {
+           background-color: var(--code-bg);
+           padding: 0.2rem 0.4rem;
+           border-radius: 4px;
+           font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+           font-size: 0.9em;
+           color: #e6e6e6;
+       }
+       pre code {
+           background: none;
+           padding: 0;
+           border-radius: 0;
+       }
+       .cpp {
+           color: #9cdcfe;
+       }
+       .bash {
+           color: #98c379;
+       }
+       .output {
+           color: #d19a66;
+       }
+       @media (max-width: 768px) {
+           .container {
+               padding: 2rem 1rem;
+           }
+           pre {
+               padding: 1rem;
+               font-size: 0.85rem;
+           }
+       }
+   </style>
+</head>
+<body>
+   <div class="container">
+       <a href="index.html" class="back-link">← back to home</a>
+       
+       <h1>vayu<span class="dot">.</span></h1>
+       <p class="tagline">lightweight deep learning framework to teach you how to backprop</p>
+       
+       <div class="github-badge">
+           <a href="https://github.com/thevoxium/vayu-ml">
+               <img src="https://img.shields.io/github/stars/thevoxium/vayu-ml?style=social" alt="GitHub stars">
+           </a>
+       </div>
+
+       <h2>quick start</h2>
+       <pre><code class="cpp">#include "include/value.h"
+#include &lt;iostream&gt;
+
+int main() {
+    auto a = make_value(2.0);
+    auto b = make_value(-3.0);
+    auto c = pow(a, 3) - b;  // c = a³ - b
+    auto d = c / b;          // d = c / b  
+    auto e = -d;             // e = -d
+    
+    e-&gt;backward();           // compute gradients
+    
+    std::cout &lt;&lt; "a: " &lt;&lt; *a &lt;&lt; std::endl;  // shows data and grad
+    std::cout &lt;&lt; "b: " &lt;&lt; *b &lt;&lt; std::endl;
+    
+    return 0;
+}</code></pre>
+
+       <h2>building</h2>
+       <pre><code class="bash"># Clone the repository
+git clone https://github.com/thevoxium/vayu-ml.git
+cd vayu-ml
+
+# Compile and run
+g++ -std=c++17 -O2 -o grad examples/main.cpp src/*.cpp && ./grad</code></pre>
+
+       <h2>example output</h2>
+       <pre><code class="output">a: Value(data=2, grad=4)
+b: Value(data=-3, grad=0.888889)
+c: Value(data=11, grad=0.333333)
+d: Value(data=-3.66667, grad=-1)
+e: Value(data=3.66667, grad=1)</code></pre>
+
+       <h2>contributing</h2>
+       <p>Contributions welcome! Open up a PR please.</p>
+   </div>
+</body>
+</html>

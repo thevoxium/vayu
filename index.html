@@ -37,6 +37,23 @@
            margin: 0 auto;
            width: 100%;
        }
+       
+       /* Readme link styling */
+       .readme-link {
+           display: inline-block;
+           color: white;
+           text-decoration: underline;
+           text-decoration-color: var(--accent-red);
+           font-size: clamp(1.1rem, 2.5vw, 1.25rem);
+           font-weight: 700;
+           margin-bottom: 2rem;
+           letter-spacing: -0.04em;
+           transition: opacity 0.2s ease;
+       }
+       .readme-link:hover {
+           opacity: 0.8;
+       }
+       
        .logo {
            font-size: clamp(4rem, 8vw, 6rem);
            font-weight: 700;
@@ -154,6 +171,7 @@
 <body>
    <section class="hero">
        <div class="container">
+           <a href="readme.html" class="readme-link">readme.md →</a>
            <h1 class="logo">vayu<span class="dot">.</span></h1>
            <p class="subtitle">lightweight deep learning framework to teach you how to backprop</p>
            <a href="https://github.com/thevoxium/vayu-ml" class="github-link">star on github →</a>
@@ -163,7 +181,6 @@
    <section class="devlog-section">
        <h2 class="devlog-title">devlog</h2>
        
-
       <article class="devlog-item">
            <div class="devlog-header">
                <span class="devlog-hash">#</span>
